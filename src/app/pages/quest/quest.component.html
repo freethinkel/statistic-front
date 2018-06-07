@@ -1,0 +1,12 @@
+<app-modal *ngIf="isModalOpen" (checkUser)="closeModal($event)"></app-modal>
+<div class="quest-wrapper" *ngIf="!isModalOpen">
+	<div class="container">
+		<div class="quests-list">
+			<div class="quest-wrapper" *ngFor="let quest of quests; let index = index;">
+				<div class="quest"> 
+					<div class="quest-index">{{ index }}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

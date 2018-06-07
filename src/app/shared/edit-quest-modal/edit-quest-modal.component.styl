@@ -1,0 +1,68 @@
+@import '~assets/colors.styl'
+
+:host 
+	position fixed
+	top 0
+	bottom 0
+	left 0
+	right 0
+	background-color rgba(#000, 0.5)
+	z-index 90
+
+.container
+	height 100%
+	display flex
+	justify-content center 
+	align-items center
+
+.form 
+	background-color #fff
+	padding 20px 16px
+	border-radius 10px
+	width 600px
+
+
+.input 
+	&-field
+		display flex
+		justify-content space-between
+		align-items flex-start
+		& + &
+			margin-top 20px
+		& input 
+			width 65%
+			height 30px
+			border none 
+			font-size 14px
+			border-bottom 2px solid $dark
+			outline none
+			&:focus
+				border-color $primary
+		& textarea
+			width 65%
+			border none 
+			font-size 14px
+			border-bottom 2px solid $dark
+			outline none
+			resize none
+			min-height 80px
+			padding 10px 0
+			&:focus
+				border-color $primary
+	&-label 
+		margin-top 10px
+		display inline-block
+		font-size 12px
+
+
+.save-btn 
+	background-color $primary
+	color #fff
+	height 32px
+	line-height 32px
+	padding 0 15px
+	border-radius 10em
+	&-wrapper
+		display flex
+		justify-content flex-end
+		margin-top 20px

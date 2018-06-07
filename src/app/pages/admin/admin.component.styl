@@ -1,0 +1,62 @@
+@import '~assets/colors.styl'
+
+
+.quest
+	box-shadow 0 2px 5px -1px rgba(#000, 0.3)
+	padding 10px 15px
+	border-radius 10px
+	margin-right 20px
+	transition 0.3s
+	&-name 
+		font-size 16px
+		font-weight bold
+	&-header
+		display flex
+		justify-content space-between
+	&-description 
+		color #666666
+		font-size 13px
+	&-content 
+		margin-top 10px
+		font-size 14px
+	&-footer
+		display flex
+		justify-content flex-end
+	&-edit-btn
+		background-color $primary
+		color #fff
+		height 32px
+		line-height 32px
+		margin-top 10px
+		padding 0 16px
+		border-radius 10em
+	&:hover
+		box-shadow 0 5px 15px -4px rgba(0,0,0,0.35)
+
+.quests-header 
+	display flex
+	justify-content space-between
+	align-items center
+.add-quests-btn {
+	height 30px
+	width 30px
+	line-height 28px
+	text-align center
+	font-size 16px
+	font-weight 200
+	background-color $primary
+	color #fff
+	border-radius 10em
+	margin-right 20px
+}
+.user
+	box-shadow 0 2px 5px -1px rgba(#000, 0.3)
+	padding 10px
+	border-radius 10px
+	display flex
+	justify-content space-between
+	transition 0.3s
+	& + & 
+		margin-top 10px
+	&:hover
+		box-shadow 0 5px 15px -4px rgba(0,0,0,0.35)

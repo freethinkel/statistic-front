@@ -1,0 +1,37 @@
+@import '~assets/colors.styl'
+@import '~assets/utils.styl'
+
+
+
+.form-wrapper
+	margin 100px auto
+
+form 
+	display block
+	border 1px solid $primary
+	width 350px
+	padding 15px
+	box-sizing border-box
+	border-radius 4px
+	input 
+		display block
+		width 100%
+		border none 
+		outline none
+		border-bottom 1px solid $dark
+		font-size 13px
+		height 36px
+		& + & 
+			margin-top 25px
+
+.form-footer-controls
+	display flex
+	justify-content space-between
+	margin-top 15px
+.login-btn
+	background-color $primary
+	height 36px
+	line-height 36px
+	border-radius 4px
+	padding 0 15px
+	color #fff

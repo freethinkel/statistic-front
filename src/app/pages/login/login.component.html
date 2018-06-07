@@ -1,0 +1,16 @@
+<div class="login-wrapper">
+  <div class="container">
+    <div class="form-wrapper">
+      <h5>Вход в админ-панель</h5>
+      <form [formGroup]="signin">
+        <input type="text" placeholder="Логин" formControlName="login">
+        <input type="password" placeholder="Пароль" formControlName="password">
+        <div class="form-footer-controls">
+          <div class="message" [hidden]="signin.valid || !error">Введены невалидные данные</div>
+          <button class="btn login-btn" (click)="submit()">Войти</button>
+        </div>
+      </form>
+  
+    </div>
+  </div>
+</div>

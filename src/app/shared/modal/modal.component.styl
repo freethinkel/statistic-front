@@ -1,0 +1,67 @@
+@import '~assets/colors'
+:host
+	position fixed
+	top 0
+	bottom 0
+	left 0
+	right 0
+	background-color rgba(#000, 0.5)
+	z-index 90
+
+.container
+	height 100%
+
+.form-wrapper
+	margin 0 auto
+	display flex
+	justify-content center 
+	align-items center
+	flex-direction column 
+
+
+.form 
+	background-color #fff
+	padding 15px 15px
+	border-radius 10px
+	& input 
+		display block
+		width 200px
+		height 32px
+		border none 
+		background-color $primary
+		outline none
+		border-radius 10em
+		padding 0 15px
+		color #fff
+		font-size 13px
+		transition 0.3s
+		box-shadow 0 4px 10px -2px rgba($primary, 0.4)
+		&::placeholder
+			color #fff
+			font-weight 100
+		& + input
+			margin-top 15px
+	& button 
+		margin-top 15px
+		background-color #fff
+		border 1px solid $primary
+		color #fff
+		height 32px
+		color $primary
+		line-height 32px
+		font-size 12px
+		text-align center
+		padding 0 15px
+		border-radius 10em
+		font-weight bold
+		position relative
+		overflow hidden
+		transition 0.3s
+		z-index 1
+
+
+.error-message
+	color #ff9b9b
+	font-size 12px
+	width 100%
+	margin-bottom 12px

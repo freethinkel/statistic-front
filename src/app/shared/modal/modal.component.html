@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="form-wrapper">
+    <div class="error-message" *ngIf="!user.valid">Введены невалидные данные</div>
+    <div class="form" [formGroup]="user">
+      <input formControlName="firstName" type="text" placeholder="Имя">
+      <input formControlName="lastName" type="text" placeholder="Фамиллия">
+      <button class="btn" (click)="start()">Перейти к квесту</button>
+    </div>
+
+  </div>
+</div>

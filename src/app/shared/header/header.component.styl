@@ -1,0 +1,44 @@
+@import '~assets/colors.styl'
+@import '~assets/utils.styl'
+
+.header
+	width: 100%
+	position relative
+	z-index 100
+	display flex
+	justify-content space-between
+	height 50px
+	align-items center
+	&-link
+		font-size 15px
+		font-weight 900
+		padding 5px 0
+		position relative
+		overflow hidden
+		& + & 
+			margin-left 20px
+		&-active 
+			&::before 
+				content ''
+				position absolute
+				bottom 0
+				height 3px
+				left 0
+				right 0
+				background-color $primary
+			&::after
+				content none
+		&::after 
+			content ''
+			position absolute
+			bottom 0
+			height 3px
+			left -100%
+			right 100%
+			background-color $primary
+			transition()
+		&:hover::after 
+			right -100%
+			left 100%
+
+	

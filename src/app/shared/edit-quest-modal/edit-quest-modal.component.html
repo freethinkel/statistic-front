@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="form" [formGroup]="questForm">
+    <div class="input-field">
+      <div class="input-label">Название теста: </div>
+      <input formControlName="name" type="text">
+    </div>
+    <div class="input-field">
+      <div class="input-label">Тип теста: </div>
+      <input formControlName="type" type="text">
+    </div>
+    <div class="input-field">
+      <div class="input-label">Полное описание: </div>
+      <textarea formControlName="description"></textarea>
+    </div>
+    <div class="input-field">
+      <div class="input-label">Ответ: </div>
+      <input formControlName="solution" type="text">
+    </div>
+    <div class="save-btn-wrapper">
+      <button class="btn save-btn" (click)="saveQuest()">Сохранить</button>
+    </div>
+  </div>
+</div>
