@@ -17,15 +17,7 @@ export class QuestComponent implements OnInit {
   }
 
   closeModal(e) {
-    if (e) {
-      this.isModalOpen = false;
-      console.log(e);
-      if (this.usersService.checkUser(e)) {
-        console.log('user is askjdb');
-      } else {
-        this.usersService.saveUser(e);
-      }
-    }
+    
   }
 
 }

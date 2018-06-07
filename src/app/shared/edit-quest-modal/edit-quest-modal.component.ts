@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
-import { QuestsService } from '../../services/quests.service';
 
 @Component({
   selector: 'app-edit-quest-modal',
@@ -12,7 +11,7 @@ export class EditQuestModalComponent implements OnInit {
   @Input() index;
   @Output() save = new EventEmitter();
   questForm;
-  constructor(private fb: FormBuilder, private questsService: QuestsService) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.initForm();
@@ -30,7 +29,7 @@ export class EditQuestModalComponent implements OnInit {
   }
 
   saveQuest() {
-    this.questsService.edit(this.index, this.questForm.value);
+    // this.questsService.edit(this.index, this.questForm.value);
     this.save.emit();
   }
 

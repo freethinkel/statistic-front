@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
-import { StorageService } from '../../services/storage.service';
-import { QuestsService } from '../../services/quests.service';
 
 @Component({
   selector: 'app-admin',
@@ -16,25 +13,23 @@ export class AdminComponent implements OnInit {
   indexEdit = 0;
   users;
   quests;
-  constructor(private authService: AuthService,
-              private router: Router,
-              private usersService: UsersService,
-              private questsService: QuestsService,
-              private storageService: StorageService) { }
+  constructor(private router: Router,
+              private usersService: UsersService,) { }
 
   ngOnInit() {
-    this.login = this.authService.logStatus;
-    this.users = this.storageService.get('users');
-    this.getQuests();
+    if (!!localStorage.getItem('token')) {
+      this.login = true;
+      this.usersService.getAdminData().subscribe((data) => {
+        console.log(data);
+      });
+    }
   }
 
   signin(e) {
-    this.login = e;
-    this.router.navigate(['/admin']);
+    this.login = !!localStorage.getItem('token');
   }
 
   getQuests() {
-    this.quests = this.questsService.getAll();
     console.log(this.quests);
   }
   editQuest(i) {

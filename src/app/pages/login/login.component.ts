@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormsModule, FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { UsersService } from '../../services/users.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   login;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService,
+              private usersServices: UsersService,
               private router: Router
             ) { }
 
@@ -24,16 +24,11 @@ export class LoginComponent implements OnInit {
     this.initForm();
   }
   submit() {
-    if (this.signin.valid) {
-      this.error = !this.authService.login(this.signin.value);
-      if (this.authService.login(this.signin.value)) {
-        this.authService.logStatus = true;
-        this.login = true;
-        this.logEmit.emit(true);
-      } else {
-        console.log('Error');
-      }
-    }
+    this.usersServices.adminLogin(this.signin.value).subscribe((data) => {
+      console.log(data);
+      localStorage.setItem('token', data.token);
+      this.logEmit.emit();
+    });
   }
 
   initForm() {
