@@ -19,8 +19,9 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     if (!!localStorage.getItem('token')) {
       this.login = true;
-      this.usersService.getAdminData().subscribe((data) => {
+      this.usersService.getAllQuests().subscribe((data) => {
         console.log(data);
+        this.quests = data;
       });
     }
   }
