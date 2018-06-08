@@ -2,8 +2,19 @@
 <ng-container *ngIf="!login">
   <app-login (logEmit)="signin($event)"></app-login>
 </ng-container>
-<ng-container *ngIf="isOpenEditQuest">
-  <app-edit-quest-modal [quest]="quests[indexEdit]" [index]="indexEdit" (save)="closeEditModal()"></app-edit-quest-modal>
+<ng-container *ngIf="isOpenQuestModal && isCreateQuest">
+  <app-edit-quest-modal 
+    [create]="isCreateQuest" 
+    (onClose)="closeEditModal()">
+  </app-edit-quest-modal>
+</ng-container>
+<ng-container *ngIf="isOpenQuestModal && !isCreateQuest">
+  <app-edit-quest-modal 
+    [create]="isCreateQuest" 
+    [quest]="quests[indexEdit]" 
+    [index]="indexEdit" 
+    (onClose)="closeEditModal()">
+  </app-edit-quest-modal>
 </ng-container>
 
 
@@ -14,7 +25,7 @@
       <div class="col l7">
         <div class="quests-header">
           <h2>Квесты</h2>
-          <button class="btn add-quests-btn">+</button>
+          <button class="btn add-quests-btn" (click)="openCreateQuest()">+</button>
         </div>
         <div class="quest" *ngFor="let quest of quests; let index = index;">
           <div class="quest-header">

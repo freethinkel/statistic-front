@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,7 @@ import { ApiService } from './services/api.service';
 import { environment } from '../environments/environment';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { QuestsService } from './services/quests.service';
 
 
 @NgModule({
@@ -33,16 +35,18 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    ClickOutsideModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule
   ],
   providers: [
+    { provide: 'API_ROOT_URL', useValue: environment.api.baseUrl },
+    { provide: 'HOSTNAME', useValue: environment.hostname,},
     UsersService, 
     ApiService,
-    { provide: 'API_ROOT_URL', useValue: environment.api.baseUrl },
-    { provide: 'HOSTNAME', useValue: environment.hostname },
+    QuestsService
   ],
   bootstrap: [AppComponent]
 })

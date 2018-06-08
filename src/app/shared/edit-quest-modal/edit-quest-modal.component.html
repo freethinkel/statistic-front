@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="form" [formGroup]="questForm">
+  <div class="form" [formGroup]="questForm" (clickOutside)="close()">
     <div class="input-field">
       <div class="input-label">Название теста: </div>
       <input formControlName="name" type="text">
@@ -17,7 +17,14 @@
       <input formControlName="solution" type="text">
     </div>
     <div class="save-btn-wrapper">
-      <button class="btn save-btn" (click)="saveQuest()">Сохранить</button>
+      <button class="btn save-btn" (click)="saveQuest()" *ngIf="!create">
+        Сохранить
+      </button>
+      
+      <button class="btn save-btn" (click)="createQuest()" *ngIf="create">
+        Создать
+      </button>
+
     </div>
   </div>
 </div>

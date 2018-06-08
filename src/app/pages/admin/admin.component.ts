@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
+import { QuestsService } from '../../services/quests.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,20 +10,21 @@ import { UsersService } from '../../services/users.service';
 })
 export class AdminComponent implements OnInit {
   login: boolean;
-  isOpenEditQuest: boolean;
+  isCreateQuest;
+  isOpenQuestModal: boolean;
+
   indexEdit = 0;
   users;
   quests;
+
   constructor(private router: Router,
-              private usersService: UsersService,) { }
+              private questsServices: QuestsService) { }
 
   ngOnInit() {
     if (!!localStorage.getItem('token')) {
       this.login = true;
-      this.usersService.getAllQuests().subscribe((data) => {
-        console.log(data);
-        this.quests = data;
-      });
+      this.getQuests();
+      this.getUsers();
     }
   }
 
@@ -31,18 +33,33 @@ export class AdminComponent implements OnInit {
   }
 
   getQuests() {
-    console.log(this.quests);
+    this.questsServices.getAllQuests().subscribe((data) => {
+      console.log(data);
+      this.quests = data;
+    });
   }
-  editQuest(i) {
-    console.log(i);
-    this.indexEdit = i;
-    console.log(this.quests[this.indexEdit]);
-    this.isOpenEditQuest = true;
-    // this.questsService.edit(i, data);
+
+  getUsers() {
+    this.questsServices.getAllUsers().subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  openCreateQuest() {
+    this.isCreateQuest = true;
+    this.isOpenQuestModal = true;
+    console.log('create');
+  }
+
+  openEditQuest() {
+    this.isCreateQuest = false;
+    this.isOpenQuestModal = true;
+    console.log('edit');
   }
 
   closeEditModal() {
-    this.isOpenEditQuest = false;
+    this.isCreateQuest = false;
+    this.isOpenQuestModal = false;
     this.getQuests();
   }
 }

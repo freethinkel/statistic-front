@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
+import { QuestsService } from '../../services/quests.service';
 
 @Component({
   selector: 'app-edit-quest-modal',
@@ -8,17 +9,25 @@ import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms'
 })
 export class EditQuestModalComponent implements OnInit {
   @Input() quest;
+  @Input() create;
   @Input() index;
-  @Output() save = new EventEmitter();
+  @Output() onClose = new EventEmitter();
+  isOpen;
   questForm;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private questsService: QuestsService) { }
 
   ngOnInit() {
-    this.initForm();
+    if (this.create) {
+      this.initForm();
+    } else {
+      this.initEditForm();
+    }
     console.log(this.quest);
+    setTimeout(() => {this.isOpen = true});
   }
 
-  initForm() {
+  initEditForm() {
     this.questForm = this.fb.group({
       name: new FormControl(this.quest.name, [Validators.required]),
       type: new FormControl(this.quest.type, [Validators.required]),
@@ -28,9 +37,38 @@ export class EditQuestModalComponent implements OnInit {
     });
   }
 
-  saveQuest() {
-    // this.questsService.edit(this.index, this.questForm.value);
-    this.save.emit();
+  initForm() {
+    this.questForm = this.fb.group({
+      name: new FormControl('', [Validators.required]),
+      type: new FormControl('', [Validators.required]),
+      solution: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      links: new FormControl('', [Validators.required])
+    });
   }
+
+  createQuest() {
+    if (this.questForm.valid) {
+      this.questsService.createQuest(this.questForm.value).subscribe((data) => {
+        console.log(data);
+      });
+    }
+  }
+
+  saveQuest() {
+    if (this.questForm.valid) {
+      this.questsService.saveQuest(this.questForm.value, this.index).subscribe((data) => {
+        console.log(data);
+      });
+    }
+  }
+
+  close() {
+    if (this.isOpen) {
+      console.log('test');
+      this.onClose.emit();
+    }
+  }
+
 
 }

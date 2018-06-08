@@ -2,17 +2,10 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 
 @Injectable()
-export class UsersService {
+export class QuestsService {
 
   constructor(private api: ApiService) { }
 
-  adminLogin(model) {
-    return this.api.post('api/login', model);
-  }
-
-  getAdminData() {
-    return this.api.get('api/admin');
-  }
 
   getAllQuests() {
     return this.api.get('api/quests/all');
@@ -20,5 +13,15 @@ export class UsersService {
 
   getAllUsers() {
     return this.api.get('api/users');
+  }
+
+  createQuest(model) {
+    return this.api.post('api/quests/create', model);
+  }
+
+  saveQuest(model, id) {
+    console.log(model);
+    return this.api.post('api/quests/update', model, id);
+
   }
 }
