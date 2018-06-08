@@ -14,11 +14,4 @@ export class UsersService {
     return this.api.get('api/admin');
   }
 
-  getAllQuests() {
-    return this.api.get('api/quests/all');
-  }
-
-  getAllUsers() {
-    return this.api.get('api/users');
-  }
 }

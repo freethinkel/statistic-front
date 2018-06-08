@@ -43,11 +43,12 @@ export class EditQuestModalComponent implements OnInit {
       type: new FormControl('', [Validators.required]),
       solution: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      links: new FormControl('', [Validators.required])
+      links: new FormControl('https://vk.com', [Validators.required])
     });
   }
 
   createQuest() {
+    console.log('create');
     if (this.questForm.valid) {
       this.questsService.createQuest(this.questForm.value).subscribe((data) => {
         console.log(data);
