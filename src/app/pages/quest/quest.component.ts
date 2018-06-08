@@ -16,8 +16,8 @@ export class QuestComponent implements OnInit {
   ngOnInit() {
   }
 
-  closeModal(e) {
-    
+  closeModal() {
+    this.isModalOpen = false;
   }
 
 }

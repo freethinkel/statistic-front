@@ -1,4 +1,6 @@
-<app-modal *ngIf="isModalOpen" (checkUser)="closeModal($event)"></app-modal>
+<app-modal *ngIf="isModalOpen" (checkUser)="closeModal()"></app-modal>
+
+
 <div class="quest-wrapper" *ngIf="!isModalOpen">
 	<div class="container">
 		<div class="quests-list">

@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   quests;
 
   constructor(private router: Router,
+              private usersService: UsersService,
               private questsServices: QuestsService) { }
 
   ngOnInit() {
@@ -40,8 +41,9 @@ export class AdminComponent implements OnInit {
   }
 
   getUsers() {
-    this.questsServices.getAllUsers().subscribe(data => {
+    this.usersService.getAllUsers().subscribe(data => {
       console.log(data);
+      this.users = data;
     });
   }
 

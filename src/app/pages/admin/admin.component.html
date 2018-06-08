@@ -36,7 +36,7 @@
             {{ quest.description | slice:0:200 }}<ng-container *ngIf="quest.description.length >= 200">...</ng-container>
           </div>
           <div class="quest-footer">
-            <button class="btn quest-edit-btn" (click)="editQuest(index)">Редактировать</button>
+            <button class="btn quest-edit-btn" (click)="openEditQuest(index)">Редактировать</button>
           </div>
         </div>
       </div>

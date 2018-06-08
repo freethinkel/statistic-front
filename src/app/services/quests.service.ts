@@ -11,10 +11,6 @@ export class QuestsService {
     return this.api.get('api/quests/all');
   }
 
-  getAllUsers() {
-    return this.api.get('api/users');
-  }
-
   createQuest(model) {
     return this.api.post('api/quests/create', model);
   }

@@ -14,4 +14,11 @@ export class UsersService {
     return this.api.get('api/admin');
   }
 
+  getAllUsers() {
+    return this.api.get('api/users/list');
+  }
+
+  createUser(model) {
+    return this.api.post('api/users/create', model);
+  }
 }
