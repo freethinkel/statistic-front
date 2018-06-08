@@ -16,6 +16,8 @@ export class AdminComponent implements OnInit {
   indexEdit = 0;
   users;
   quests;
+  isQuestsLoad = true;
+  isUsersLoad = true;
 
   constructor(private router: Router,
               private usersService: UsersService,
@@ -34,16 +36,20 @@ export class AdminComponent implements OnInit {
   }
 
   getQuests() {
+    this.isQuestsLoad = true;
     this.questsServices.getAllQuests().subscribe((data) => {
       console.log(data);
       this.quests = data;
+      this.isQuestsLoad = false;
     });
   }
 
   getUsers() {
+    this.isUsersLoad = true;
     this.usersService.getAllUsers().subscribe(data => {
       console.log(data);
       this.users = data;
+      this.isUsersLoad = false;
     });
   }
 

@@ -43,3 +43,39 @@ body
 p 
 	line-height 1.6
 	font-size 16px
+
+
+.loader 
+	height 10px
+	width 10px
+	border-radius 10em
+	border 3px solid $primary
+	position relative
+	display inline-block
+	margin-bottom -3px
+	&::before
+		content ''
+		position absolute
+		top -4px
+		bottom -4px
+		left -4px
+		right 5px
+		border-radius 15px 0 0 15px
+		background-color #fff
+		transform-origin: 9px;
+		animation loader 0.5s linear 0s infinite
+	&:after
+		content ''
+		position absolute
+
+
+.loader-wrapper
+	color $dark
+	font-size 12px
+	text-align center
+
+@keyframes loader 
+	from 
+		transform rotate(0deg)
+	to
+		transform rotate(360deg)

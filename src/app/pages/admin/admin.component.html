@@ -24,25 +24,35 @@
       
       <div class="col l7">
         <div class="quests-header">
-          <h2>Квесты</h2>
           <button class="btn add-quests-btn" (click)="openCreateQuest()">+</button>
+          <h2>Квесты</h2>
         </div>
-        <div class="quest" *ngFor="let quest of quests; let index = index;">
-          <div class="quest-header">
-            <div class="quest-name"> {{ quest.name }} </div>
-            <div class="quest-description">{{ quest.type }} | {{ quest.solution }}</div>
-          </div>
-          <div class="quest-content">
-            {{ quest.description | slice:0:200 }}<ng-container *ngIf="quest.description.length >= 200">...</ng-container>
-          </div>
-          <div class="quest-footer">
-            <button class="btn quest-edit-btn" (click)="openEditQuest(index)">Редактировать</button>
-          </div>
+        <div class="loader-wrapper" *ngIf="isQuestsLoad">
+          <div class="loader"></div>
+          Загрузка квестов
         </div>
+        <ng-container *ngIf="!isQuestsLoad">
+          <div class="quest" *ngFor="let quest of quests; let index = index;">
+            <div class="quest-header">
+              <div class="quest-name"> {{ quest.name }} </div>
+              <div class="quest-description">{{ quest.type }} | {{ quest.solution }}</div>
+            </div>
+            <div class="quest-content">
+              {{ quest.description | slice:0:200 }}<ng-container *ngIf="quest.description.length >= 200">...</ng-container>
+            </div>
+            <div class="quest-footer">
+              <button class="btn quest-edit-btn" (click)="openEditQuest(index)">Редактировать</button>
+            </div>
+          </div>
+        </ng-container>
       </div>
       <div class="col l5 blue">
         <h2>Участвовашие</h2>
-        <div class="users-wrapper">
+        <div class="loader-wrapper" *ngIf="isUsersLoad">
+          <div class="loader"></div>
+          Загрузка участовавших
+        </div>
+        <div class="users-wrapper" *ngIf="!isUsersLoad">
           <div class="user" *ngFor="let user of users">
             {{ user.firstName }} {{ user.lastName }}
           </div>
