@@ -19,6 +19,8 @@ import { environment } from '../environments/environment';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { QuestsService } from './services/quests.service';
+import { QuestItemComponent } from './shared/quest-item/quest-item.component';
+import { AutosizeDirective } from './directives/autosize.directive';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { QuestsService } from './services/quests.service';
     ModalComponent,
     QuestModalComponent,
     EditQuestModalComponent,
+    QuestItemComponent,
+    AutosizeDirective,
   ],
   imports: [
     BrowserModule,
