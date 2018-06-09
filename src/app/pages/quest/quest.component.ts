@@ -16,6 +16,7 @@ export class QuestComponent implements OnInit {
               private questsService: QuestsService) { }
 
   ngOnInit() {
+    this.getQuests();
   }
 
   closeModal() {
