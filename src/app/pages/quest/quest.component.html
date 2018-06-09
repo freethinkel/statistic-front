@@ -1,14 +1,19 @@
 <app-modal *ngIf="isModalOpen" (checkUser)="closeModal()"></app-modal>
 
 
-<div class="quest-wrapper" *ngIf="!isModalOpen">
+<div class="quests-wrapper" *ngIf="!isModalOpen && !isLoadQuests">
 	<div class="container">
 		<div class="quests-list">
 			<div class="quest-wrapper" *ngFor="let quest of quests; let index = index;">
-				<div class="quest"> 
-					<div class="quest-index">{{ index }}</div>
-				</div>
+				<app-quest-item [index]="index+1" [quest]="quest"></app-quest-item>
 			</div>
 		</div>
 	</div>
 </div>
+
+<div class="loader-wrapper" *ngIf="isLoadQuests">
+	<div class="loader"></div>
+	Загрузка квестов
+</div>
+
+<button class="btn done-btn">Завершить</button>

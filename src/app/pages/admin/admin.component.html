@@ -12,7 +12,6 @@
   <app-edit-quest-modal 
     [create]="isCreateQuest" 
     [quest]="quests[indexEdit]" 
-    [index]="indexEdit" 
     (onClose)="closeEditModal()">
   </app-edit-quest-modal>
 </ng-container>
@@ -46,7 +45,7 @@
           </div>
         </ng-container>
       </div>
-      <div class="col l5 blue">
+      <div class="col l5 users">
         <h2>Участвовашие</h2>
         <div class="loader-wrapper" *ngIf="isUsersLoad">
           <div class="loader"></div>

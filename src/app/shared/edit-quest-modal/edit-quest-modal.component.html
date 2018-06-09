@@ -2,19 +2,19 @@
   <div class="form" [formGroup]="questForm" (clickOutside)="close()">
     <div class="input-field">
       <div class="input-label">Название теста: </div>
-      <input formControlName="name" type="text">
+      <input formControlName="name" type="text" placeholder="название">
     </div>
     <div class="input-field">
       <div class="input-label">Тип теста: </div>
-      <input formControlName="type" type="text">
+      <input formControlName="type" type="text" placeholder="тип">
     </div>
     <div class="input-field">
       <div class="input-label">Полное описание: </div>
-      <textarea autosize formControlName="description"></textarea>
+      <textarea autosize formControlName="description" placeholder="описание"></textarea>
     </div>
     <div class="input-field">
       <div class="input-label">Ответ: </div>
-      <input formControlName="solution" type="text">
+      <input formControlName="solution" type="text" placeholder="ответ">
     </div>
     <div class="save-btn-wrapper">
       <button class="btn save-btn" (click)="saveQuest()" *ngIf="!create">

@@ -10,7 +10,6 @@ import { QuestsService } from '../../services/quests.service';
 export class EditQuestModalComponent implements OnInit {
   @Input() quest;
   @Input() create;
-  @Input() index;
   @Output() onClose = new EventEmitter();
   isOpen;
   questForm;
@@ -58,7 +57,7 @@ export class EditQuestModalComponent implements OnInit {
 
   saveQuest() {
     if (this.questForm.valid) {
-      this.questsService.saveQuest(this.questForm.value, this.index).subscribe((data) => {
+      this.questsService.saveQuest(this.quest._id, this.questForm.value).subscribe((data) => {
         console.log(data);
       });
     }

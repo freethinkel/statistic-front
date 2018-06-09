@@ -1,3 +1,27 @@
-<p>
-  quest-item works!
-</p>
+<div class="btn index-btn" [class.passed]="solution" [class.not-passed]="!solution" (click)="openModal()"> 
+  <div class="index">{{ index }}</div>
+</div>
+
+
+<div class="modal-quest-info-wrapper" *ngIf="isOpenModal">
+  <div class="quest-content" (clickOutside)="closeModal()">
+    <div class="quest-header">
+      <div class="title">{{ quest.name }}</div>
+      <div class="quest-type">{{ quest.type }}</div>
+    </div>
+
+    <div class="description">
+      {{ quest.description }}
+    </div>
+    <div class="links">
+      <div class="link-title">Ссылки по которым вы можете узнать дополнительную информацию</div>
+      <a *ngFor="let link of quest.links; let index = index;" [attr.href]="link" class="link">Ссылка {{ index }}</a>
+    </div>
+    <div class="solution-wrapper">
+      <input type="text" placeholder="Ответ" class="solution" [(ngModel)]="solution">
+    </div>
+
+  </div>
+</div>
+<div class="overlay" *ngIf="isOpenModal"></div>
+

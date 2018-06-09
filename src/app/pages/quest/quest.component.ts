@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
-import { quests } from '../../modules/quests.module';
 import { QuestsService } from '../../services/quests.service';
 
 @Component({
@@ -9,8 +8,9 @@ import { QuestsService } from '../../services/quests.service';
   styleUrls: ['./quest.component.styl']
 })
 export class QuestComponent implements OnInit {
-  isModalOpen = true;
-  quests = quests;
+  isModalOpen = false;
+  quests;
+  isLoadQuests = true;
 
   constructor(private usersService: UsersService,
               private questsService: QuestsService) { }
@@ -23,7 +23,9 @@ export class QuestComponent implements OnInit {
   }
 
   getQuests() {
+    this.isLoadQuests = true;
     this.questsService.getAllQuests().subscribe(data => {
+      this.isLoadQuests = false;
       this.quests = data;
     });
   }

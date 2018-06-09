@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ClickOutsideModule } from 'ng-click-outside';
 
 import { AppComponent } from './app.component';
@@ -43,7 +43,8 @@ import { AutosizeDirective } from './directives/autosize.directive';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     { provide: 'API_ROOT_URL', useValue: environment.api.baseUrl },

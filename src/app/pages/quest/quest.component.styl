@@ -1,21 +1,25 @@
 @import '~assets/colors.styl'
 
-.quest-wrapper
-	height 100vh
+.quest
+	&s-list
+		width: 100%
+		display flex
+	&-wrapper
+		display inline-block
+		margin-top 10px
+		padding 0 5px
 
-
-
-.quest 
-	width: 60px
-	padding-top 100%
-	position relative
-	border-radius 7px
-	border: 1px solid rgba($primary, .2)
-	box-shadow 0 1px 5px 0 rgba(#000, 0.25)
-	transition 0.3s
-	&-index
-		position absolute
-		top 5px
-		left 5px
-		color $primary
-		text-align center
+.done-btn 
+	position fixed
+	bottom 15px
+	right 20px
+	// border 1px solid $primary
+	background-color $primary
+	box-shadow 0 4px 15px -1px rgba($primary, 0.5)
+	// color $primary
+	color #fff
+	border-radius 10em
+	height 40px
+	padding 0 20px
+	font-size 16px
+	

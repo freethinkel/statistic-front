@@ -17,7 +17,11 @@ export class QuestsService {
 
   saveQuest(model, id) {
     console.log(model);
-    return this.api.post('api/quests/update', model, id);
+    let data = {
+      id: id,
+      model: model
+    };
+    return this.api.put('api/quests/update', data);
 
   }
 }
