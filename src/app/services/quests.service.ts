@@ -21,7 +21,7 @@ export class QuestsService {
       id: id,
       model: model
     };
-    return this.api.post('api/quests/update', data);
+    return this.api.put('api/quests/update', data);
 
   }
 }
