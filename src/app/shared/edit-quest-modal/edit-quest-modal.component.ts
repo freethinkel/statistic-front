@@ -59,6 +59,7 @@ export class EditQuestModalComponent implements OnInit {
     if (this.questForm.valid) {
       this.questsService.saveQuest(this.questForm.value, this.quest._id).subscribe((data) => {
         console.log(data);
+        this.onClose.emit();
       });
     }
   }
