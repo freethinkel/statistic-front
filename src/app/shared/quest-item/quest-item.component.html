@@ -15,7 +15,7 @@
     </div>
     <div class="links">
       <div class="link-title">Ссылки по которым вы можете узнать дополнительную информацию</div>
-      <a *ngFor="let link of quest.links; let index = index;" [attr.href]="link" class="link">Ссылка {{ index }}</a>
+      <a *ngFor="let link of quest.links; let index = index;" [attr.href]="link" class="link">{{ link }}</a>
     </div>
     <div class="solution-wrapper">
       <input type="text" placeholder="Ответ" class="solution" [(ngModel)]="solution">

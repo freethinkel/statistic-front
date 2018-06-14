@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuestsService } from './services/quests.service';
 import { QuestItemComponent } from './shared/quest-item/quest-item.component';
 import { AutosizeDirective } from './directives/autosize.directive';
+import { LinkPipe } from './pipes/link.pipe';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AutosizeDirective } from './directives/autosize.directive';
     EditQuestModalComponent,
     QuestItemComponent,
     AutosizeDirective,
+    LinkPipe,
   ],
   imports: [
     BrowserModule,

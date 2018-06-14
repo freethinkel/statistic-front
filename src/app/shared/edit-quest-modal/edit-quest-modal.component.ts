@@ -38,11 +38,12 @@ export class EditQuestModalComponent implements OnInit {
 
   initForm() {
     this.questForm = this.fb.group({
-      name: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required]),
-      solution: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      links: new FormControl('https://vk.com', [Validators.required])
+      name: ['', [Validators.required]],
+      type: ['', [Validators.required]],
+      solution: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      link: ['', [Validators.required, Validators.pattern(/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig)]],
+      links: this.fb.array([])
     });
   }
 
@@ -52,6 +53,17 @@ export class EditQuestModalComponent implements OnInit {
       this.questsService.createQuest(this.questForm.value).subscribe((data) => {
         console.log(data);
       });
+    }
+  }
+
+  addLink() {
+    if (this.questForm.controls.link.valid) {
+      let group = this.fb.group({
+        link: [this.questForm.value.link, Validators.required]
+      });
+      console.log(this.questForm);
+      this.questForm.controls.links.push(group);
+      this.questForm.controls.link.setValue('');
     }
   }
 
