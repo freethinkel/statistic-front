@@ -17,7 +17,7 @@ export class QuestsService {
 
   removeQuest(id) {
     console.log(id);
-    return this.api.delete('api/quest', id);
+    return this.api.post('api/quest/delete', {id});
   }
 
   saveQuest(model, id) {
