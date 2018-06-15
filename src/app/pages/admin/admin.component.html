@@ -32,6 +32,7 @@
         </div>
         <ng-container *ngIf="!isQuestsLoad">
           <div class="quest" *ngFor="let quest of quests; let index = index;">
+            <button class="quest-remove-btn">Удалить</button>
             <div class="quest-header">
               <div class="quest-name"> {{ quest.name }} </div>
               <div class="quest-description">{{ quest.type }} | {{ quest.solution }}</div>
