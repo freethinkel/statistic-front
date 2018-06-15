@@ -22,7 +22,7 @@
     <div class="container">
       
       <div class="col l7">
-        <div class="quests-header">
+        <div class="quests-header admin-header">
           <button class="btn add-quests-btn" (click)="openCreateQuest()">+</button>
           <h2>Квесты</h2>
         </div>
@@ -32,7 +32,7 @@
         </div>
         <ng-container *ngIf="!isQuestsLoad">
           <div class="quest" *ngFor="let quest of quests; let index = index;">
-            <button class="quest-remove-btn">Удалить</button>
+            <button class="quest-remove-btn" (click)="removeQuest(index)">Удалить</button>
             <div class="quest-header">
               <div class="quest-name"> {{ quest.name }} </div>
               <div class="quest-description">{{ quest.type }} | {{ quest.solution }}</div>
@@ -47,7 +47,7 @@
         </ng-container>
       </div>
       <div class="col l5 users">
-        <h2>Участвовашие</h2>
+        <h2 class="admin-header">Участвовашие</h2>
         <div class="loader-wrapper" *ngIf="isUsersLoad">
           <div class="loader"></div>
           Загрузка участовавших

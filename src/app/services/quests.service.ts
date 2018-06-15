@@ -12,7 +12,12 @@ export class QuestsService {
   }
 
   createQuest(model) {
-    return this.api.post('api/quests/create', model);
+    return this.api.post('api/quest', model);
+  }
+
+  removeQuest(id) {
+    console.log(id);
+    return this.api.delete('api/quest', id);
   }
 
   saveQuest(model, id) {
@@ -21,7 +26,7 @@ export class QuestsService {
       id: id,
       model: model
     };
-    return this.api.put('api/quests/update', data);
+    return this.api.put('api/quest', data);
 
   }
 }

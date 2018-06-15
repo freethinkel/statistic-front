@@ -12,15 +12,21 @@ h2
 	position: relative
 	&-remove-btn 
 		position: absolute
-		top -10px
-		left 20px
+		top -12px
+		right 20px
 		height: 20px
-		line-height: 20px
+		line-height: 18px
 		font-size: 12px
-		background-color: $primary
-		color #fff
+		background-color: #fff
+		color $primary
 		padding: 0 15px
 		border-radius: 10em;
+		border: 1px dashed $primary
+		outline: none
+		&:hover 
+			background-color: $primary
+			color #fff
+			border-style: solid
 	&-name 
 		font-size 16px
 		font-weight bold
@@ -72,6 +78,7 @@ h2
 	display flex
 	justify-content space-between
 	transition 0.3s
+	background-color: #fff
 	& + & 
 		margin-top 10px
 	&:hover
@@ -81,5 +88,9 @@ h2
 	border-left 1px solid rgba($dark, 0.2)
 	padding-left 20px
 
-.admin-wrapper
-	margin-top 30px
+.admin
+	&-header
+		margin-bottom: 20px
+	&-wrapper
+		margin-top 30px
+

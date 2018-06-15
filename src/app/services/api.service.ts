@@ -70,5 +70,20 @@ export class ApiService {
     return  this.http.put(`${this.apiRootUrl}${url}`, body, { headers: headers, params: params }).pipe(map(response => response.json()));
   }
 
+  delete(url, paramsObj?) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    // if (this.tokenService.token) {
+    //   headers.append('Authorization', 'Bearer ' + this.tokenService.token);
+    // }
+    let params: URLSearchParams = new URLSearchParams('');
+    if (paramsObj) {
+      for (let param in paramsObj) {
+        params.set(param, paramsObj[param]);
+      }
+    }
+    return this.http.delete(`${this.apiRootUrl}${url}`, { headers: headers, params: params }).pipe(map(response => response.json()))
+  }
 
 }
