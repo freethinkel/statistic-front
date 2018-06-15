@@ -15,9 +15,11 @@
     <div class="input-field">
       <div class="input-label">Ссылки на материал: </div>
       <div class="input-group">
-        <div class="links-values" *ngFor="let item of questForm.value.links">{{ item.link | link }}</div>
-        <div class="add-link-btn" (click)="addLink()">+</div>
-        <input class="link-input" [class.error]="!questForm.controls.link.valid" formControlName="link" type="text" placeholder="ссылка">
+        <div class="links-values" *ngFor="let item of questForm.controls.links.value; let index = index;" (click)="removeLink(index)">{{ item.link | link }}</div>
+        <div class="link-wrapper">
+          <input class="link-input" [class.error]="!questForm.controls.link.valid" formControlName="link" type="text" placeholder="ссылка">
+          <div class="add-link-btn" (click)="addLink()">+</div>
+        </div>
       </div>
     </div>
     <div class="input-field">

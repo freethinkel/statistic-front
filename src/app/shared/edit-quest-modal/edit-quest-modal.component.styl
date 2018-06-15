@@ -32,6 +32,7 @@
 	text-align center
 	cursor pointer
 	border-radius 10em
+	margin-left: 10px
 
 .link-input
 	width 70px !important
@@ -39,8 +40,9 @@
 	border-color red !important
 .input-group 
 	width 65%
-	& > * 
-		display inline-block
+	display: flex
+	flex-wrap: wrap
+	align-items: center
 
 .links-values 
 	width 50px
@@ -54,9 +56,8 @@
 	line-height 20px
 	padding 0 5px
 	border-radius 10em
-	margin-bottom -5px
-	& + & 
-		margin-left 10px
+	margin-right: 10px
+	cursor pointer
 .input 
 	&-field
 		display flex
@@ -101,3 +102,7 @@
 		display flex
 		justify-content flex-end
 		margin-top 20px
+
+.link-wrapper 
+	display: flex
+	align-items: center

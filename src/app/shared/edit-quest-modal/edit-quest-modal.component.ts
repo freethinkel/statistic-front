@@ -28,11 +28,12 @@ export class EditQuestModalComponent implements OnInit {
 
   initEditForm() {
     this.questForm = this.fb.group({
-      name: new FormControl(this.quest.name, [Validators.required]),
-      type: new FormControl(this.quest.type, [Validators.required]),
-      solution: new FormControl(this.quest.solution, [Validators.required]),
-      description: new FormControl(this.quest.description, [Validators.required]),
-      links: new FormControl(this.quest.links, [Validators.required])
+      name: [this.quest.name, [Validators.required]],
+      type: [this.quest.type, [Validators.required]],
+      solution: [this.quest.solution, [Validators.required]],
+      description: [this.quest.description, [Validators.required]],
+      link: [],
+      links: [this.quest.links, [Validators.required]]
     });
   }
 
@@ -42,14 +43,14 @@ export class EditQuestModalComponent implements OnInit {
       type: ['', [Validators.required]],
       solution: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      link: ['', [Validators.required, Validators.pattern(/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig)]],
-      links: this.fb.array([])
+      link: ['', [Validators.pattern(/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig)]],
+      links: this.fb.array([], Validators.required)
     });
   }
 
   createQuest() {
-    console.log('create');
     if (this.questForm.valid) {
+      console.log('create');
       this.questsService.createQuest(this.questForm.value).subscribe((data) => {
         console.log(data);
       });
@@ -57,7 +58,7 @@ export class EditQuestModalComponent implements OnInit {
   }
 
   addLink() {
-    if (this.questForm.controls.link.valid) {
+    if (this.questForm.controls.link.valid && this.questForm.controls.link.value.length) {
       let group = this.fb.group({
         link: [this.questForm.value.link, Validators.required]
       });
@@ -65,6 +66,13 @@ export class EditQuestModalComponent implements OnInit {
       this.questForm.controls.links.push(group);
       this.questForm.controls.link.setValue('');
     }
+  }
+
+  removeLink(i) {
+    console.log(i);
+    setTimeout(() => {this.questForm.controls.links.removeAt(i)});
+
+
   }
 
   saveQuest() {
@@ -77,6 +85,7 @@ export class EditQuestModalComponent implements OnInit {
   }
 
   close() {
+    console.log('close');
     if (this.isOpen) {
       console.log('test');
       this.onClose.emit();
