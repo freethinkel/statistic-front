@@ -32,8 +32,8 @@ export class EditQuestModalComponent implements OnInit {
       type: [this.quest.type, [Validators.required]],
       solution: [this.quest.solution, [Validators.required]],
       description: [this.quest.description, [Validators.required]],
-      link: [],
-      links: [this.quest.links, [Validators.required]]
+      link: ['',[Validators.pattern(/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig)]],
+      links: this.fb.array(this.quest.links, Validators.required)
     });
   }
 
