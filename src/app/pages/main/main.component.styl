@@ -9,6 +9,7 @@
 	position relative
 	padding-top 50px
 	box-sizing border-box
+	overflow hidden
 	&::after
 		content ''
 		position absolute
@@ -66,3 +67,11 @@ h1
 	&:hover:before
 		transform scale(15)
 		opacity 0.7
+
+.vert-center
+	display flex
+	flex-direction column
+	justify-content center
+	height 100%
+	position relative
+	z-index -1

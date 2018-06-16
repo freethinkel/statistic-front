@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="card">
+    <div class="header">
+      <h2>{{ data.data.lastName }} {{ data.data.firstName }}</h2> 
+      <div class="percentage">{{ data.correctCount / data.totalCount * 100 | number: '0.0-1' }}%</div>
+    </div>
+
+    <div class="description">Ваш результат: <br>
+      {{ data.correctCount }} правильных ответов из {{ data.totalCount }}
+    </div>
+    <div class="btn-wrapper">
+      <button class="btn btn-close" [routerLink]="['/main']">Закрыть</button>
+    </div>
+  </div>
+</div>

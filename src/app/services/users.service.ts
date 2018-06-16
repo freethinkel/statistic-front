@@ -21,4 +21,9 @@ export class UsersService {
   createUser(model) {
     return this.api.post('api/users/create', model);
   }
+
+  deleteUser(id) {
+    return this.api.post('api/user/delete', {id});
+  }
+
 }

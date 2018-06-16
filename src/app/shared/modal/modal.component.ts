@@ -9,6 +9,7 @@ import { UsersService } from '../../services/users.service';
 })
 export class ModalComponent implements OnInit {
   user: FormGroup;
+  formValid;
   @Output() checkUser = new EventEmitter();
 
   constructor(private fb: FormBuilder,
@@ -19,18 +20,20 @@ export class ModalComponent implements OnInit {
       firstName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/[\wа-я]+/)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/[\wа-я]+/)]),
       group: new FormControl('', [Validators.required]),
-      countComplitedQuests: new FormControl(0, [Validators.min(0)])
     });
   }
 
   start() {
     if (this.user.valid) {
-      this.usersService.createUser(this.user.value).subscribe(data => {
-        console.log(data);
-        this.checkUser.emit();
-      });
+      localStorage.setItem('user', JSON.stringify(this.user.value));
+      this.checkUser.emit();
     }
   }
 
+  onChange() {
+    console.log('change');
+    this.formValid = this.user.valid;
+
+  }
 
 }

@@ -67,7 +67,8 @@ export class AdminComponent implements OnInit {
     console.log('create');
   }
 
-  openEditQuest() {
+  openEditQuest(i) {
+    this.indexEdit = i;
     this.isCreateQuest = false;
     this.isOpenQuestModal = true;
     console.log('edit');

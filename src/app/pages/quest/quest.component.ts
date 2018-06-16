@@ -9,6 +9,8 @@ import { QuestsService } from '../../services/quests.service';
 })
 export class QuestComponent implements OnInit {
   isModalOpen = true;
+  isModalDoneOpen = false;
+  doneData;
   quests;
   isLoadQuests = true;
   solutions;
@@ -18,9 +20,6 @@ export class QuestComponent implements OnInit {
 
   ngOnInit() {
     this.getQuests();
-    if (this.quests) {
-      this.solutions = Array(this.quests.length);
-    }
   }
 
   closeModal() {
@@ -32,11 +31,24 @@ export class QuestComponent implements OnInit {
     this.questsService.getAllQuests().subscribe(data => {
       this.isLoadQuests = false;
       this.quests = data;
+      if (this.quests) {
+        this.solutions = new Array(this.quests.length);
+      }
     });
   }
 
-  submitTest() {
+  setSolution(e, i) {
+    this.solutions[i] = e;
+    console.log(e,i);
+  }
 
+  submitTest() {
+    let user = JSON.parse(localStorage.getItem('user'));
+    user['solutions'] = this.solutions;
+    this.usersService.createUser(user).subscribe(data => {
+      this.doneData = data;
+      this.isModalDoneOpen = true;
+    });
   }
 
 }

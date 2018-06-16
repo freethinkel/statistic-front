@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgModule } from '@angular/core';
+import { Component, OnInit, Input, NgModule, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-quest-item',
@@ -8,7 +8,8 @@ import { Component, OnInit, Input, NgModule } from '@angular/core';
 export class QuestItemComponent implements OnInit {
   @Input() index;
   @Input() quest;
-  @Input() solution;
+  @Output() solution = new EventEmitter();
+  _solution;
   isOpenModal;
   constructor() { }
 
@@ -22,6 +23,7 @@ export class QuestItemComponent implements OnInit {
 
   closeModal() {
     if (this.isOpenModal) {
+      this.solution.emit(this._solution.trim().toLowerCase());
       this.isOpenModal = false;
     }
   }

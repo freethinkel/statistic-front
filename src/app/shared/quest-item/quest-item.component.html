@@ -1,4 +1,4 @@
-<div class="btn index-btn" [class.passed]="solution" [class.not-passed]="!solution" (click)="openModal()"> 
+<div class="btn index-btn" [class.passed]="solution" [class.not-passed]="!_solution" (click)="openModal()"> 
   <div class="index">{{ index }}</div>
 </div>
 
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="solution-wrapper">
-      <input type="text" placeholder="Ответ" class="solution" [(ngModel)]="solution">
+      <input type="text" placeholder="Ответ" class="solution" [(ngModel)]="_solution">
     </div>
 
   </div>

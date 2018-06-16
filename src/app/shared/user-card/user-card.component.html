@@ -1,0 +1,21 @@
+<div class="user" [class.user-open]="isOpenDesc" (clickOutside)="closeDesc()">
+  <div class="user-wrapper">
+    <div class="user-name">{{ user.data.firstName }} {{ user.data.lastName }}</div>
+    <div class="user-control">{{ user.correctCount / user.totalCount * 100 | number: '0.0-1' }}%</div>
+  </div>
+  <button class="btn open-btn" [class.open-btn-active]="isOpenDesc" (click)="toggleOpen()">▼</button>
+  <div class="user-description-data" [hidden]="!isOpenDesc" [class.user-description-data-open]="isOpenDesc">
+    <div class="user-description-data-header">
+      <div class="title">Ответы:</div>
+      <div class="date"> {{ user.date | date: 'd' }} {{ rusMonth[user.date | date: 'M'] }} {{ user.date | date: 'yyyy' }}</div>
+    </div>
+    <div class="user-description-data-body">
+      <ul>
+        <li *ngFor="let solution of user.data.solutions"> {{ solution }} </li>
+      </ul>
+    </div>
+    <div class="user-description-data-footer">
+      <button class="btn delete-btn" (click)="deleteUser()">Удалить участника</button>
+    </div>
+  </div>
+</div>

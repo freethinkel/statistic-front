@@ -1,11 +1,11 @@
 <app-modal *ngIf="isModalOpen" (checkUser)="closeModal()"></app-modal>
-
+<app-modal-quest-done *ngIf="isModalDoneOpen" [data]="doneData"></app-modal-quest-done>
 
 <div class="quests-wrapper" *ngIf="!isModalOpen && !isLoadQuests">
 	<div class="container">
 		<div class="quests-list">
 			<div class="quest-wrapper" *ngFor="let quest of quests; let index = index;">
-				<app-quest-item [index]="index+1" [quest]="quest" [solution]="solutions[index]"></app-quest-item>
+				<app-quest-item [index]="index+1" [quest]="quest" (solution)="setSolution($event, index)"></app-quest-item>
 			</div>
 		</div>
 	</div>

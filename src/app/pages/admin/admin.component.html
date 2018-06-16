@@ -53,9 +53,8 @@
           Загрузка участовавших
         </div>
         <div class="users-wrapper" *ngIf="!isUsersLoad">
-          <div class="user" *ngFor="let user of users">
-            <div class="user-name">{{ user.firstName }} {{ user.lastName }}</div>
-            <div class="user-control">test</div>
+          <div class="user-wrapper" *ngFor="let user of users">
+            <app-user-card [user]="user" (delete)="getUsers()"></app-user-card>
           </div>
         </div>
       </div>

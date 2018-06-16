@@ -53,6 +53,7 @@ export class EditQuestModalComponent implements OnInit {
       console.log('create');
       this.questsService.createQuest(this.questForm.value).subscribe((data) => {
         console.log(data);
+        this.onClose.emit();
       });
     }
   }

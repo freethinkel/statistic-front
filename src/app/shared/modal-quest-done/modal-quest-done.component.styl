@@ -1,0 +1,60 @@
+@import '~assets/colors'
+
+:host
+  position fixed
+  top 0
+  bottom 0
+  left 0
+  right 0
+  background-color rgba(#000, 0.5)
+  z-index 90
+
+.container
+  display: flex
+  align-items: center
+  justify-content center
+  min-height: 100vh
+
+.card 
+  background-color: #fff
+  z-index 3
+  border-radius: 10px
+  padding: 10px 20px
+  min-width: 600px
+
+.header 
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-top: 20px
+  margin-bottom: 15px
+
+h2
+  font-weight 100
+  font-size 40px
+  margin: 0
+
+.percentage
+  font-size 30px
+  font-weight 900
+
+.description
+  line-height: 1.5
+
+
+.btn-wrapper 
+  margin-top: 20px
+  display flex
+  width 100%
+  justify-content: flex-end
+.btn-close  
+	// border 1px solid $primary
+	background-color $primary
+	box-shadow 0 4px 15px -1px rgba($primary, 0.5)
+	// color $primary
+	color #fff
+	border-radius 10em
+	height 30px
+	padding 0 20px
+	font-size 13px
+	

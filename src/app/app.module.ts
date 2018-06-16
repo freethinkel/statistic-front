@@ -12,7 +12,6 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ModalComponent } from './shared/modal/modal.component';
 import { UsersService } from './services/users.service';
-import { QuestModalComponent } from './shared/quest-modal/quest-modal.component';
 import { EditQuestModalComponent } from './shared/edit-quest-modal/edit-quest-modal.component';
 import { ApiService } from './services/api.service';
 import { environment } from '../environments/environment';
@@ -22,6 +21,8 @@ import { QuestsService } from './services/quests.service';
 import { QuestItemComponent } from './shared/quest-item/quest-item.component';
 import { AutosizeDirective } from './directives/autosize.directive';
 import { LinkPipe } from './pipes/link.pipe';
+import { ModalQuestDoneComponent } from './shared/modal-quest-done/modal-quest-done.component';
+import { UserCardComponent } from './shared/user-card/user-card.component';
 
 
 @NgModule({
@@ -33,11 +34,12 @@ import { LinkPipe } from './pipes/link.pipe';
     AdminComponent,
     LoginComponent,
     ModalComponent,
-    QuestModalComponent,
     EditQuestModalComponent,
     QuestItemComponent,
     AutosizeDirective,
     LinkPipe,
+    ModalQuestDoneComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,
