@@ -8,7 +8,7 @@ import { QuestsService } from '../../services/quests.service';
   styleUrls: ['./quest.component.styl']
 })
 export class QuestComponent implements OnInit {
-  isModalOpen = false;
+  isModalOpen = true;
   quests;
   isLoadQuests = true;
   solutions;
