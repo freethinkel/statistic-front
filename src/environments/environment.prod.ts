@@ -3,6 +3,6 @@ export const environment = {
   envName: 'prod',
   hostname: 'https://kgeu.herokuapp.com/',
   api: {
-    baseUrl: 'http://kgeu-api.herokuapp.com/'
+    baseUrl: 'https://kgeu-api.herokuapp.com/'
   }
 };
