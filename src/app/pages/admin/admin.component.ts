@@ -48,6 +48,7 @@ export class AdminComponent implements OnInit {
     console.log(i);
     this.questsServices.removeQuest(this.quests[i]._id).subscribe(data => {
       console.log(data);
+      this.getQuests();
     });
   }
 
