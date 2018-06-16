@@ -22,7 +22,6 @@ export class EditQuestModalComponent implements OnInit {
     } else {
       this.initEditForm();
     }
-    console.log(this.quest);
     setTimeout(() => {this.isOpen = true});
   }
 
@@ -50,9 +49,7 @@ export class EditQuestModalComponent implements OnInit {
 
   createQuest() {
     if (this.questForm.valid) {
-      console.log('create');
       this.questsService.createQuest(this.questForm.value).subscribe((data) => {
-        console.log(data);
         this.onClose.emit();
       });
     }
@@ -70,7 +67,6 @@ export class EditQuestModalComponent implements OnInit {
   }
 
   removeLink(i) {
-    console.log(i);
     setTimeout(() => {this.questForm.controls.links.removeAt(i)});
 
 
@@ -79,16 +75,13 @@ export class EditQuestModalComponent implements OnInit {
   saveQuest() {
     if (this.questForm.valid) {
       this.questsService.saveQuest(this.questForm.value, this.quest._id).subscribe((data) => {
-        console.log(data);
         this.onClose.emit();
       });
     }
   }
 
   close() {
-    console.log('close');
     if (this.isOpen) {
-      console.log('test');
       this.onClose.emit();
     }
   }

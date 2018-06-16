@@ -39,7 +39,6 @@ export class QuestComponent implements OnInit {
 
   setSolution(e, i) {
     this.solutions[i] = e;
-    console.log(e,i);
   }
 
   submitTest() {

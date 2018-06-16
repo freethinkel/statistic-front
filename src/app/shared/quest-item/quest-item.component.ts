@@ -14,7 +14,6 @@ export class QuestItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.quest);
   }
 
   openModal() {

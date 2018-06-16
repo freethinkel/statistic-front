@@ -6,8 +6,8 @@
         <input type="text" placeholder="Логин" formControlName="login">
         <input type="password" placeholder="Пароль" formControlName="password">
         <div class="form-footer-controls">
-          <div class="message" [hidden]="signin.valid || !error">Введены невалидные данные</div>
           <button class="btn login-btn" (click)="submit()">Войти</button>
+          <div class="message" [hidden]="signin.valid && error">{{ errorMessage }}</div>
         </div>
       </form>
   

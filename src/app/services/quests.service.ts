@@ -16,12 +16,10 @@ export class QuestsService {
   }
 
   removeQuest(id) {
-    console.log(id);
     return this.api.post('api/delete/quest', {id});
   }
 
   saveQuest(model, id) {
-    console.log(model);
     let data = {
       id: id,
       model: model

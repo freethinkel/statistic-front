@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   signin: FormGroup;
   error;
   login;
+  errorMessage = 'Введены невалидные данные';
 
   constructor(private fb: FormBuilder,
               private usersServices: UsersService,
@@ -24,11 +25,14 @@ export class LoginComponent implements OnInit {
     this.initForm();
   }
   submit() {
-    this.usersServices.adminLogin(this.signin.value).subscribe((data) => {
-      console.log(data);
-      localStorage.setItem('token', data.token);
-      this.logEmit.emit();
-    });
+    if (this.signin.valid) {
+      this.usersServices.adminLogin(this.signin.value).subscribe((data) => {
+        localStorage.setItem('token', data.token);
+        this.logEmit.emit();
+      }, () => { this.errorMessage = 'неверный пароль'; this.error = false; });
+    } else {
+      this.error = true;
+    }
   }
 
   initForm() {

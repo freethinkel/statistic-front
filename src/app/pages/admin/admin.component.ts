@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { QuestsService } from '../../services/quests.service';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-admin',
@@ -21,6 +22,7 @@ export class AdminComponent implements OnInit {
 
   constructor(private router: Router,
               private usersService: UsersService,
+              private tokenService: TokenService,
               private questsServices: QuestsService) { }
 
   ngOnInit() {
@@ -33,12 +35,14 @@ export class AdminComponent implements OnInit {
 
   signin(e) {
     this.login = !!localStorage.getItem('token');
+    this.tokenService.state.next(true);
+    this.getQuests();
+    this.getUsers();
   }
 
   getQuests() {
     this.isQuestsLoad = true;
     this.questsServices.getAllQuests().subscribe((data) => {
-      console.log(data);
       this.quests = data;
       this.isQuestsLoad = false;
     });
@@ -47,7 +51,6 @@ export class AdminComponent implements OnInit {
   removeQuest(i) {
     console.log(i);
     this.questsServices.removeQuest(this.quests[i]._id).subscribe(data => {
-      console.log(data);
       this.getQuests();
     });
   }
@@ -55,7 +58,6 @@ export class AdminComponent implements OnInit {
   getUsers() {
     this.isUsersLoad = true;
     this.usersService.getAllUsers().subscribe(data => {
-      console.log(data);
       this.users = data;
       this.isUsersLoad = false;
     });
@@ -64,14 +66,12 @@ export class AdminComponent implements OnInit {
   openCreateQuest() {
     this.isCreateQuest = true;
     this.isOpenQuestModal = true;
-    console.log('create');
   }
 
   openEditQuest(i) {
     this.indexEdit = i;
     this.isCreateQuest = false;
     this.isOpenQuestModal = true;
-    console.log('edit');
   }
 
   closeEditModal() {

@@ -23,6 +23,7 @@ import { AutosizeDirective } from './directives/autosize.directive';
 import { LinkPipe } from './pipes/link.pipe';
 import { ModalQuestDoneComponent } from './shared/modal-quest-done/modal-quest-done.component';
 import { UserCardComponent } from './shared/user-card/user-card.component';
+import { TokenService } from './services/token.service';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { UserCardComponent } from './shared/user-card/user-card.component';
     { provide: 'HOSTNAME', useValue: environment.hostname,},
     UsersService, 
     ApiService,
-    QuestsService
+    QuestsService,
+    TokenService
   ],
   bootstrap: [AppComponent]
 })

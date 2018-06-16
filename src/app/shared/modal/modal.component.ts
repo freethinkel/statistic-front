@@ -24,6 +24,7 @@ export class ModalComponent implements OnInit {
   }
 
   start() {
+    this.formValid = !this.user.valid;
     if (this.user.valid) {
       localStorage.setItem('user', JSON.stringify(this.user.value));
       this.checkUser.emit();
@@ -32,8 +33,7 @@ export class ModalComponent implements OnInit {
 
   onChange() {
     console.log('change');
-    this.formValid = this.user.valid;
-
+    this.formValid = false;
   }
 
 }
