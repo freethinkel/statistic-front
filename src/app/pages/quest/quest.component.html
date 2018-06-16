@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="quests-list">
 			<div class="quest-wrapper" *ngFor="let quest of quests; let index = index;">
-				<app-quest-item [index]="index+1" [quest]="quest"></app-quest-item>
+				<app-quest-item [index]="index+1" [quest]="quest" [solution]="solutions[index]"></app-quest-item>
 			</div>
 		</div>
 	</div>
@@ -16,4 +16,4 @@
 	Загрузка квестов
 </div>
 
-<button class="btn done-btn">Завершить</button>
+<button class="btn done-btn" (click)="submitTest()">Завершить</button>

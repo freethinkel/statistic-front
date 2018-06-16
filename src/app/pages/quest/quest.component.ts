@@ -11,12 +11,16 @@ export class QuestComponent implements OnInit {
   isModalOpen = false;
   quests;
   isLoadQuests = true;
+  solutions;
 
   constructor(private usersService: UsersService,
               private questsService: QuestsService) { }
 
   ngOnInit() {
     this.getQuests();
+    if (this.quests) {
+      this.solutions = Array(this.quests.length);
+    }
   }
 
   closeModal() {
@@ -29,6 +33,10 @@ export class QuestComponent implements OnInit {
       this.isLoadQuests = false;
       this.quests = data;
     });
+  }
+
+  submitTest() {
+
   }
 
 }

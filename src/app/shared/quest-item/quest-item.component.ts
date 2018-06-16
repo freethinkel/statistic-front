@@ -8,8 +8,8 @@ import { Component, OnInit, Input, NgModule } from '@angular/core';
 export class QuestItemComponent implements OnInit {
   @Input() index;
   @Input() quest;
+  @Input() solution;
   isOpenModal;
-  solution = '';
   constructor() { }
 
   ngOnInit() {
