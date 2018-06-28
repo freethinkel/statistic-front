@@ -32,7 +32,6 @@ export class ModalComponent implements OnInit {
   }
 
   onChange() {
-    console.log('change');
     this.formValid = false;
   }
 
