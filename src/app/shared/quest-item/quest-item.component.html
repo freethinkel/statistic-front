@@ -26,5 +26,10 @@
   </div>
 </div>
 
-<div class="overlay" *ngIf="isOpenModal"></div>
+<div class="modal-error" *ngIf="showError" (clickOutside)="closeError()">
+  <div class="title">Завершите предыдущее задание.</div>
+  <div class="description">Для того чтобы приступить к данному заданию, завершите предыдущее.</div>
+</div>
+
+<div class="overlay" *ngIf="isOpenModal || showError"></div>
 

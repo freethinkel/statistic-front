@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="quests-list">
 			<div class="quest-wrapper" *ngFor="let quest of quests; let index = index;">
-				<app-quest-item [index]="index+1" [quest]="quest" (solution)="setSolution($event, index)"></app-quest-item>
+				<app-quest-item [permitter]="solutions" [index]="index+1" [quest]="quest" (solution)="setSolution($event, index)"></app-quest-item>
 			</div>
 		</div>
 	</div>
